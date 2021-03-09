@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polito.tdp.parole.FXMLController">
+<BorderPane xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polito.tdp.parole.FXMLController">
    <top>
       <Label text="Lab 1 - Lista di Parole" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -22,9 +26,20 @@
                   <Label text="Parola" />
                   <TextField fx:id="txtParola" onAction="#doInsert" promptText="inserisci..." />
                   <Button fx:id="btnInserisci" mnemonicParsing="false" onAction="#doInsert" text="Inserisci" />
+                  <Button mnemonicParsing="false" onAction="#doDelete" text="Cancella" />
                </children>
             </HBox>
+            <Label fx:id="txtComunicazioni">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
             <TextArea fx:id="txtResult" editable="false" prefHeight="200.0" prefWidth="200.0" wrapText="true" />
+            <TextField fx:id="txtTime" editable="false" prefHeight="26.0" prefWidth="172.0">
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding>
+            </TextField>
          </children>
       </VBox>
    </center>
@@ -35,7 +50,3 @@
       <Button fx:id="btnReset" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#doReset" text="Reset" BorderPane.alignment="CENTER_RIGHT" />
    </bottom>
 </BorderPane>
-
-
-
-
