@@ -17,7 +17,7 @@ import javafx.scene.control.TextField;
 public class FXMLController {
 	
 	Parole elenco;
-	long tempo;
+	long start,end;
 	
     @FXML
     private ResourceBundle resources;
@@ -46,6 +46,7 @@ public class FXMLController {
     @FXML
     void doInsert(ActionEvent event) {
     	// TODO
+    	start=System.currentTimeMillis();
     	String p="";
     	p=txtParola.getText();
     	if (p.matches("(?=.*[0-9]).{1,}"))
@@ -62,10 +63,10 @@ public class FXMLController {
     	{
     		ss+=s+"\n";
     	}
-    	tempo=System.nanoTime();
-    	int tempoInt=((int) tempo)*10^(-9);
+    	end=System.currentTimeMillis();
+    	int tempoInt=(int) (end-start);
     	String tempoStr=String.valueOf(tempoInt);
-    	txtTime.setText(tempoStr);
+    	txtTime.setText(tempoStr+" ms");
      	txtResult.setText(ss);
     	txtParola.setText("");
     	txtComunicazioni.setText("");
@@ -75,16 +76,19 @@ public class FXMLController {
     @FXML
     void doReset(ActionEvent event) {
     	// TODO
+    	start=System.currentTimeMillis();
     	elenco.reset();
     	txtResult.setText("");
-    	tempo=System.nanoTime();
-    	int tempoInt=((int) tempo)*10^(-9);
+    	txtParola.setText("");
+    	end=System.currentTimeMillis();
+    	int tempoInt=(int) (end-start);
     	String tempoStr=String.valueOf(tempoInt);
-    	txtTime.setText(tempoStr);
+    	txtTime.setText(tempoStr+" ms");
     }
     
     @FXML
     void doDelete(ActionEvent event) {
+    	start=System.currentTimeMillis();
     	boolean flag=elenco.delete(txtParola.getText());
     	if (flag==false)
     		txtComunicazioni.setText("La parola non è presente nell'elenco");
@@ -100,10 +104,10 @@ public class FXMLController {
         	}
         	txtResult.setText(ss);
     	}
-    	tempo=System.nanoTime();
-    	int tempoInt=((int) tempo)*10^(-9);
+    	end=System.currentTimeMillis();
+    	int tempoInt=(int) (end-start);
     	String tempoStr=String.valueOf(tempoInt);
-    	txtTime.setText(tempoStr);
+    	txtTime.setText(tempoStr+" ms");
     }
 
     @FXML
